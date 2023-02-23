@@ -1,0 +1,24 @@
+{
+  "name": "mediasoup-wrapper",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mafalda-SFU/Mediasoup-Wrapper.git"
+  },
+  "keywords": [
+    "Mediasoup",
+    "Mafalda",
+    "SFU"
+  ],
+  "author": "Jesús Leganés-Combarro 'piranna' (https://piranna.github.io)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mafalda-SFU/Mediasoup-Wrapper/issues"
+  },
+  "homepage": "https://github.com/Mafalda-SFU/Mediasoup-Wrapper#readme"
+}
