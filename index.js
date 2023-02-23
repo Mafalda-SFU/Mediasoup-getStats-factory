@@ -1,5 +1,7 @@
 import { cpus, freemem, loadavg, totalmem, uptime } from 'os'
 
+import pidusage from 'pidusage'
+
 
 function _stats()
 {

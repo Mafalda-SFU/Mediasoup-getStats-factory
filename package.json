@@ -1,5 +1,5 @@
 {
-  "name": "mediasoup-wrapper",
+  "name": "@mafalda/mediasoup-wrapper",
   "version": "0.0.0",
   "description": "",
   "main": "index.js",
@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/Mafalda-SFU/Mediasoup-Wrapper/issues"
   },
-  "homepage": "https://github.com/Mafalda-SFU/Mediasoup-Wrapper#readme"
+  "homepage": "https://github.com/Mafalda-SFU/Mediasoup-Wrapper#readme",
+  "dependencies": {
+    "pidusage": "^3.0.2"
+  }
 }
