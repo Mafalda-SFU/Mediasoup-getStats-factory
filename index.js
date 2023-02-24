@@ -3,8 +3,9 @@ import { cpus, freemem, loadavg, totalmem, uptime } from 'os'
 import pidusage from 'pidusage'
 
 
-function _stats()
+async function _stats()
 {
+  // TODO: provide stats of real Mediasoup Workers, not only the Mafalda ones
   return {
     os: {
       // availableParallelism: availableParallelism(),
@@ -29,7 +30,7 @@ async function createWorker(settings)
 {
   const worker = await this.createWorker(settings)
 
-  return new Proxy(worker, {get: getterFactory({getResourceUsage})});
+  return new Proxy(worker, handlerWorker);
 }
 
 async function getResourceUsage()
@@ -55,19 +56,23 @@ function getterFactory(properties)
   {
     let property
 
+    // TODO: memoize binded methods
     ({[prop]: property} = properties)
-    if(property) return property;
+    if(property) return property.bind(target);
 
     ({[prop]: property} = target)
-    if(property instanceof Function)
-      return property.bind(target)  // TODO: memoize
+    if(property instanceof Function) return property.bind(target)
 
     return property
   }
 }
 
 
+const handlerMediasoup = {get: getterFactory({_stats, createWorker})}
+const handlerWorker = {get: getterFactory({getResourceUsage})}
+
+
 export default function(mediasoup)
 {
-  return new Proxy(mediasoup, {get: getterFactory({_stats, createWorker})})
+  return new Proxy(mediasoup, handlerMediasoup)
 }
