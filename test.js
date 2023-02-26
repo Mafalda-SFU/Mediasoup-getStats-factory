@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-import assert from 'node:assert'
-import test from 'node:test'
+const assert = require('node:assert')
+const test = require('node:test')
 
-import mediasoupWrapper from './index.js'
+const mediasoupWrapper = require('./index.js')
 
 
 test('mediasoup-wrapper', async function(t)

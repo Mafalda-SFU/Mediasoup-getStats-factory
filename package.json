@@ -2,7 +2,6 @@
   "name": "@mafalda/mediasoup-wrapper",
   "version": "0.0.0",
   "description": "",
-  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "node --experimental-test-coverage test.js"

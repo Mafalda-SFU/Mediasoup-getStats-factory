@@ -1,6 +1,6 @@
-import { cpus, freemem, loadavg, totalmem, uptime } from 'os'
+const { cpus, freemem, loadavg, totalmem, uptime } = require('os')
 
-import pidusage from 'pidusage'
+const pidusage = require('pidusage')
 
 
 async function _stats()
@@ -72,7 +72,7 @@ const handlerMediasoup = {get: getterFactory({_stats, createWorker})}
 const handlerWorker = {get: getterFactory({getResourceUsage})}
 
 
-export default function(mediasoup)
+module.exports = function(mediasoup)
 {
   return new Proxy(mediasoup, handlerMediasoup)
 }
