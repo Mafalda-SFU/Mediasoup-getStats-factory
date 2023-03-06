@@ -2,8 +2,10 @@
   "name": "@mafalda/mediasoup-wrapper",
   "version": "0.0.0",
   "description": "",
-  "main": "index.js",
+  "private": true,
+  "main": "./index.js",
   "scripts": {
+    "bytenodeify": "bytenodeify",
     "test": "node --experimental-test-coverage test.js"
   },
   "repository": {
@@ -16,12 +18,15 @@
     "SFU"
   ],
   "author": "Jesús Leganés-Combarro 'piranna' (https://piranna.github.io)",
-  "license": "ISC",
+  "license": "UNLICENSED",
   "bugs": {
     "url": "https://github.com/Mafalda-SFU/Mediasoup-Wrapper/issues"
   },
-  "homepage": "https://github.com/Mafalda-SFU/Mediasoup-Wrapper#readme",
+  "homepage": "https://mafalda.io",
   "dependencies": {
     "pidusage": "^3.0.2"
+  },
+  "devDependencies": {
+    "bytenodeify": "github:Mafalda-SFU/bytenodeify"
   }
 }
