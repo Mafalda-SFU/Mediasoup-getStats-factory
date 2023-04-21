@@ -1,11 +1,12 @@
 {
-  "name": "@mafalda/mediasoup-wrapper",
+  "name": "@mafalda-sfu/mediasoup-wrapper",
   "version": "0.0.0",
   "description": "",
   "private": true,
   "main": "./index.js",
   "scripts": {
-    "bytenodeify": "bytenodeify",
+    "lint": "eslint .",
+    "pretest": "#npm run lint",
     "test": "node --experimental-test-coverage test.js"
   },
   "repository": {
@@ -27,6 +28,9 @@
     "pidusage": "^3.0.2"
   },
   "devDependencies": {
-    "bytenodeify": "github:Mafalda-SFU/bytenodeify"
+    "@mafalda-sfu/eslint-config": "^0.1.1",
+    "eslint": "^8.38.0",
+    "husky": "^8.0.3",
+    "jsdoc-to-markdown": "^8.0.0"
   }
 }
