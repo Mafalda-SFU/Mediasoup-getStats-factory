@@ -7,7 +7,8 @@
   "scripts": {
     "lint": "eslint .",
     "pretest": "#npm run lint",
-    "test": "node --experimental-test-coverage test.js"
+    "test": "node --experimental-test-coverage test.js",
+    "test:json": "NODE_OPTIONS='--test-reporter=@mafalda-sfu/test-reporter-json --test-reporter-destination=coverage.json' npm test"
   },
   "repository": {
     "type": "git",
@@ -29,6 +30,7 @@
   },
   "devDependencies": {
     "@mafalda-sfu/eslint-config": "^0.3.0",
+    "@mafalda-sfu/test-reporter-json": "^0.0.1",
     "eslint": "^8.49.0",
     "husky": "^8.0.3",
     "jsdoc-to-markdown": "^8.0.0"
