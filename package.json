@@ -29,8 +29,8 @@
     "pidusage": "^3.0.2"
   },
   "devDependencies": {
-    "@mafalda-sfu/eslint-config": "^0.3.0",
-    "@mafalda-sfu/test-reporter-json": "^0.0.1",
+    "@mafalda-sfu/eslint-config": "^0.6.3",
+    "@mafalda-sfu/test-reporter-json": "^0.0.3",
     "eslint": "^8.49.0",
     "husky": "^8.0.3",
     "jsdoc-to-markdown": "^8.0.0"
