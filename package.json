@@ -5,7 +5,9 @@
   "description": "",
   "main": "./index.js",
   "scripts": {
+    "docs": "cp README.md docs/ && jsdoc2md *.js > docs/API.md",
     "lint": "eslint .",
+    "predocs": "mkdir -p docs/",
     "pretest": "npm run lint",
     "test": "node --experimental-test-coverage test.js",
     "test:json": "NODE_OPTIONS='--test-reporter=@mafalda-sfu/test-reporter-json --test-reporter-destination=coverage.json' npm test"
