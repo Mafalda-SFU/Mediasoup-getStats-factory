@@ -1,4 +1,4 @@
-const { cpus, freemem, loadavg, totalmem, uptime } = require('os')
+const {cpus, freemem, loadavg, totalmem, uptime} = require('os')
 
 const pidusage = require('pidusage')
 

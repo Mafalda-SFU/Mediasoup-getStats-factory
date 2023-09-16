@@ -6,7 +6,7 @@
   "main": "./index.js",
   "scripts": {
     "lint": "eslint .",
-    "pretest": "#npm run lint",
+    "pretest": "npm run lint",
     "test": "node --experimental-test-coverage test.js",
     "test:json": "NODE_OPTIONS='--test-reporter=@mafalda-sfu/test-reporter-json --test-reporter-destination=coverage.json' npm test"
   },
