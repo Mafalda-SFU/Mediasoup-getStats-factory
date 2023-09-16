@@ -30,7 +30,7 @@ async function createWorker(settings)
 {
   const worker = await this.createWorker(settings)
 
-  return new Proxy(worker, handlerWorker);
+  return new Proxy(worker, handlerWorker)
 }
 
 async function getResourceUsage()
