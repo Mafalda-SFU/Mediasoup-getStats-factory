@@ -1,49 +1,63 @@
-const assert = require('node:assert')
+const {deepStrictEqual} = require('node:assert/strict')
+const EventEmitter = require('node:events')
 const test = require('node:test')
 
-const mediasoupWrapper = require('./index.js')
+const getStatsFactory = require('./index.js')
 
 
-test('mediasoup-wrapper', async function(t)
+test('lifecycle', async function()
 {
   const mediasoup = {
     async createWorker()
     {
-      return {
+      const worker = {
+        close()
+        {
+          this.observer.emit('close')
+        },
         async getResourceUsage()
         {
           return {}
         },
+        observer: new EventEmitter,
         pid: process.pid
       }
-    }
+
+      this.observer.emit('newworker', worker)
+
+      return worker
+    },
+    observer: new EventEmitter
   }
 
-  const mw = await mediasoupWrapper(mediasoup)
+  const {close, getStats} = await getStatsFactory(mediasoup)
 
-  assert(typeof mw, 'object')
-  assert(typeof mw._stats, 'function')
-  assert(typeof mw.createWorker, 'function')
+  deepStrictEqual(typeof close, 'function')
+  deepStrictEqual(typeof getStats, 'function')
 
-  const stats = await mw._stats()
+  const stats1 = await getStats()
 
-  assert(typeof stats, 'object')
-  assert(typeof stats.os, 'object')
-  assert(typeof stats.process, 'object')
+  deepStrictEqual(typeof stats1, 'object')
+  deepStrictEqual(typeof stats1.os, 'object')
+  deepStrictEqual(typeof stats1.pidusages, 'undefined')
+  deepStrictEqual(typeof stats1.process, 'object')
 
-  const worker = await mw.createWorker()
+  const worker = await mediasoup.createWorker()
 
-  assert(typeof worker, 'object')
-  assert(typeof worker.getResourceUsage, 'function')
+  deepStrictEqual(typeof worker, 'object')
+  deepStrictEqual(typeof worker.getResourceUsage, 'function')
 
   const resourceUsage = await worker.getResourceUsage()
 
-  assert(typeof resourceUsage, 'object')
-  assert(typeof resourceUsage._cpu, 'number')
-  assert(typeof resourceUsage._ctime, 'number')
-  assert(typeof resourceUsage._elapsed, 'number')
-  assert(typeof resourceUsage._memory, 'number')
-  assert(typeof resourceUsage._pid, 'number')
-  assert(typeof resourceUsage._ppid, 'number')
-  assert(typeof resourceUsage._timestamp, 'number')
+  deepStrictEqual(typeof resourceUsage, 'object')
+
+  const stats2 = await getStats()
+
+  deepStrictEqual(typeof stats2, 'object')
+  deepStrictEqual(typeof stats2.os, 'object')
+  deepStrictEqual(typeof stats2.pidusages, 'object')
+  deepStrictEqual(typeof stats2.process, 'object')
+
+  worker.close()
+  close()
 })
