@@ -1,8 +1,7 @@
 {
-  "name": "@mafalda-sfu/mediasoup-wrapper",
+  "name": "@mafalda-sfu/mediasoup-getstats-factory",
   "version": "0.0.0",
-  "private": true,
-  "description": "",
+  "description": "Get system and Worker processes stats for Mediasoup apps",
   "main": "./index.js",
   "scripts": {
     "docs": "cp README.md docs/ && jsdoc2md *.js > docs/API.md",
@@ -22,7 +21,7 @@
     "SFU"
   ],
   "author": "Jesús Leganés-Combarro 'piranna' (https://piranna.github.io)",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Mafalda-SFU/Mediasoup-Wrapper/issues"
   },
