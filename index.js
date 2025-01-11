@@ -12,7 +12,7 @@ module.exports = function({observer})
     // TODO: provide stats of real Mediasoup Workers, not only for the Mafalda
     // ones
 
-    const pidusages = workersPids?.length
+    const pidusages = workersPids.length
       ? await pidusage(workersPids)
       : undefined
 
@@ -39,7 +39,7 @@ module.exports = function({observer})
 
   function onNewWorker({observer, pid})
   {
-    if(workersPids.includes(pid)) return
+    if(workersPids.includes(pid)) return  // TODO: Should not happen
 
     workersPids.push(pid)
 
