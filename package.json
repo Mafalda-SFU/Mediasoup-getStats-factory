@@ -7,6 +7,7 @@
     "docs": "cp README.md docs/ && jsdoc2md *.js > docs/API.md",
     "lint": "eslint .",
     "predocs": "mkdir -p docs/",
+    "prepare": "husky",
     "pretest": "npm run lint",
     "test": "node --experimental-test-coverage test.js",
     "test:json": "NODE_OPTIONS='--test-reporter=@mafalda-sfu/test-reporter-json --test-reporter-destination=coverage.json' npm test"
@@ -33,7 +34,7 @@
     "@mafalda-sfu/eslint-config": "^0.7.0",
     "@mafalda-sfu/test-reporter-json": "^0.0.7",
     "eslint": "^8.53.0",
-    "husky": "^8.0.3",
+    "husky": "^9.1.7",
     "jsdoc-to-markdown": "^9.1.1"
   }
 }

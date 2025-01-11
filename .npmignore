@@ -1,0 +1,7 @@
+.github/
+.husky/
+.vscode/
+*.tgz
+.eslintrc
+coverage.json
+test.js
