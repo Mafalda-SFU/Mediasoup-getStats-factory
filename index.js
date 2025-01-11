@@ -7,6 +7,13 @@ const pidusage = require('pidusage')
 
 module.exports = function({observer})
 {
+  function close()
+  {
+    observer.off('newworker', _onNewWorker)
+
+    workersPids.length = 0
+  }
+
   async function getStats()
   {
     // TODO: provide stats of real Mediasoup Workers, not only for the Mafalda
@@ -37,7 +44,7 @@ module.exports = function({observer})
     }
   }
 
-  function onNewWorker({observer, pid})
+  function _onNewWorker({observer, pid})
   {
     if(workersPids.includes(pid)) return  // TODO: Should not happen
 
@@ -52,11 +59,9 @@ module.exports = function({observer})
   }
 
 
-  const close = observer
-    .on('newworker', onNewWorker)
-    .off.bind(observer, 'newworker', onNewWorker)
-
   const workersPids = []
+
+  observer.on('newworker', _onNewWorker)
 
   return {close, getStats}
 }
