@@ -28,7 +28,7 @@
   },
   "homepage": "https://mafalda.io",
   "dependencies": {
-    "pidusage": "^3.0.2"
+    "pidusage": "^4.0.0"
   },
   "devDependencies": {
     "@mafalda-sfu/eslint-config": "^0.7.0",
