@@ -14,7 +14,7 @@ module.exports = function({observer})
     workersPids.length = 0
   }
 
-  async function getStats()
+  async function getStats(fullMemoryUsage = false)
   {
     // TODO: provide stats of real Mediasoup Workers, not only for the Mafalda
     // ones
@@ -22,6 +22,10 @@ module.exports = function({observer})
     const pidusages = workersPids.length
       ? await pidusage(workersPids)
       : undefined
+
+    const memoryUsage = fullMemoryUsage
+      ? process.memoryUsage()             // TODO: docs says this might be slow.
+      : {rss: process.memoryUsage.rss()}  //       `memoryUsage.rss()` is faster
 
     return {
       os: {
@@ -37,7 +41,7 @@ module.exports = function({observer})
         constrainedMemory: process.constrainedMemory(),
         cpuUsage: process.cpuUsage(),
         hrtime: process.hrtime.bigint(),
-        memoryUsage: process.memoryUsage(),
+        memoryUsage,
         resourceUsage: process.resourceUsage(),
         uptime: process.uptime()
       }
