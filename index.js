@@ -38,6 +38,7 @@ module.exports = function({observer})
       },
       pidusages,
       process: {
+        availableMemory: process.availableMemory(),
         constrainedMemory: process.constrainedMemory(),
         cpuUsage: process.cpuUsage(),
         hrtime: process.hrtime.bigint(),
